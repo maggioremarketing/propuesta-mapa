@@ -1,558 +1,791 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Network - Responsive Preview</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Our Network - Responsive Preview</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    :root {
-      --blue: #1958f4;
-      --cyan: #17dddb;
-      --ink: #071226;
-      --muted: #42526b;
-      --soft-border: rgba(25, 88, 244, .14);
-    }
+    <style>
+      :root {
+        --blue: #1958f4;
+        --cyan: #17dddb;
+        --ink: #071226;
+        --muted: #42526b;
+        --soft-border: rgba(25, 88, 244, 0.14);
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
-      overflow-x: hidden;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 75% 10%, rgba(25, 88, 244, .32), transparent 38%),
-        radial-gradient(circle at 70% 42%, rgba(23, 221, 219, .22), transparent 36%),
-        linear-gradient(135deg, #fafdff 0%, #eafaff 42%, #eef4ff 100%);
-    }
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        overflow-x: hidden;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at 75% 10%,
+            rgba(25, 88, 244, 0.32),
+            transparent 38%
+          ),
+          radial-gradient(
+            circle at 70% 42%,
+            rgba(23, 221, 219, 0.22),
+            transparent 36%
+          ),
+          linear-gradient(135deg, #fafdff 0%, #eafaff 42%, #eef4ff 100%);
+      }
 
-    .network-section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: clamp(48px, 7vw, 96px) 0;
-      overflow: hidden;
-    }
+      .network-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: clamp(48px, 7vw, 96px) 0;
+        overflow: hidden;
+      }
 
-    .network-section::before,
-    .network-section::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(255, 255, 255, .45);
-      border-radius: 50%;
-      pointer-events: none;
-    }
+      .network-section::before,
+      .network-section::after {
+        content: "";
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 50%;
+        pointer-events: none;
+      }
 
-    .network-section::before {
-      width: 520px;
-      height: 520px;
-      right: -160px;
-      top: -240px;
-    }
+      .network-section::before {
+        width: 520px;
+        height: 520px;
+        right: -160px;
+        top: -240px;
+      }
 
-    .network-section::after {
-      width: 760px;
-      height: 760px;
-      right: -300px;
-      top: -360px;
-      opacity: .65;
-    }
+      .network-section::after {
+        width: 760px;
+        height: 760px;
+        right: -300px;
+        top: -360px;
+        opacity: 0.65;
+      }
 
-    .network-content {
-      position: relative;
-      z-index: 2;
-    }
+      .network-content {
+        position: relative;
+        z-index: 2;
+      }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
-      font-size: clamp(.74rem, .9vw, .88rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--blue);
-    }
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        font-size: clamp(0.74rem, 0.9vw, 0.88rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
 
-    .network-title {
-      margin: 0 0 18px;
-      font-size: clamp(4.1rem, 8vw, 7.2rem);
-      line-height: .86;
-      font-weight: 600;
-      letter-spacing: -.075em;
-    }
+      .network-title {
+        margin: 0 0 18px;
+        font-size: clamp(4.1rem, 8vw, 7.2rem);
+        line-height: 0.86;
+        font-weight: 600;
+        letter-spacing: -0.075em;
+      }
 
-    .network-title span {
-      display: block;
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+      .network-title span {
+        display: block;
+        background: linear-gradient(90deg, var(--blue), var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-    .network-copy {
-      max-width: 520px;
-      margin: 0;
-      color: #20314c;
-      font-size: clamp(1rem, 1.1vw, 1.08rem);
-      line-height: 1.62;
-    }
+      .network-copy {
+        max-width: 520px;
+        margin: 0;
+        color: #20314c;
+        font-size: clamp(1rem, 1.1vw, 1.08rem);
+        line-height: 1.62;
+      }
 
-    .ux-card {
-      max-width: 460px;
-      margin-top: 28px;
-      padding: 20px 22px;
-      border: 1px solid var(--soft-border);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, .66);
-      box-shadow: 0 24px 60px rgba(27, 61, 122, .08);
-      backdrop-filter: blur(10px);
-    }
+      .ux-card {
+        max-width: 460px;
+        margin-top: 28px;
+        padding: 20px 22px;
+        border: 1px solid var(--soft-border);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.66);
+        box-shadow: 0 24px 60px rgba(27, 61, 122, 0.08);
+        backdrop-filter: blur(10px);
+      }
 
-    .ux-card strong {
-      display: block;
-      margin-bottom: 9px;
-      font-size: .98rem;
-      font-weight: 900;
-    }
+      .ux-card strong {
+        display: block;
+        margin-bottom: 9px;
+        font-size: 0.98rem;
+        font-weight: 900;
+      }
 
-    .ux-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: .96rem;
-    }
+      .ux-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 0.96rem;
+      }
 
-    .map-shell {
-      position: relative;
-      width: min(100%, 680px);
-      margin-inline: auto;
-      padding: 8px 0 0;
-    }
+      .map-shell {
+        position: relative;
+        width: min(100%, 920px);
+        margin-inline: auto;
+        padding: 8px 0 0;
+      }
 
-    .map-stage {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1860.7 / 1986.9;
-      overflow: visible;
-    }
+      .map-stage {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1860.7 / 1986.9;
+        overflow: visible;
+      }
 
-    .latam-map {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      pointer-events: none;
-      filter: drop-shadow(0 18px 36px rgba(25, 88, 244, .06));
-      user-select: none;
-    }
+      .latam-map {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+        pointer-events: none;
+        filter: drop-shadow(0 18px 36px rgba(25, 88, 244, 0.06));
+        user-select: none;
+      }
 
-    /*
+      /*
       Country labels are placed independently from the pins.
       Use --x / --y to move each label away from markers.
       The labels keep a minimum readable size on mobile.
     */
-    .country-label {
-      position: absolute;
-      z-index: 4;
-      left: var(--x);
-      top: var(--y);
-      transform: translate(-50%, -50%);
-      min-width: max-content;
-      color: #334766;
-      font-size: clamp(13px, 1.35vw, 19px);
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -.045em;
-      text-shadow: none;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .country-label.label-small {
-      font-size: clamp(12px, 1.05vw, 16px);
-    }
-
-    .country-label.label-left {
-      transform: translate(-100%, -50%);
-    }
-
-    .country-label.label-right {
-      transform: translate(0, -50%);
-    }
-
-    .country-label.label-top {
-      transform: translate(-50%, -100%);
-    }
-
-    .country-label.label-bottom {
-      transform: translate(-50%, 0);
-    }
-
-    .network-pin {
-      position: absolute;
-      z-index: 6;
-      left: var(--x);
-      top: var(--y);
-      width: clamp(16px, 1.8vw, 24px);
-      height: clamp(16px, 1.8vw, 24px);
-      border: 1.5px solid #fff;
-      border-radius: 999px;
-      background: var(--cyan);
-      box-shadow: 0 4px 12px rgba(25, 88, 244, .16);
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-      appearance: none;
-      padding: 0;
-      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-    }
-
-    .network-pin:hover,
-    .network-pin:focus-visible,
-    .network-pin.active {
-      background: var(--blue);
-      transform: translate(-50%, -50%) scale(1.22);
-      box-shadow: 0 7px 18px rgba(25, 88, 244, .3);
-      outline: none;
-    }
-
-    .network-pin.coming-soon {
-      background: #aeb8c4;
-    }
-
-    .network-pin.coming-soon:hover,
-    .network-pin.coming-soon:focus-visible,
-    .network-pin.coming-soon.active {
-      background: #6f7d8d;
-    }
-
-    .map-legend {
-      display: flex;
-      align-items: center;
-      justify-content: left;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .legend-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .72);
-      box-shadow: 0 16px 38px rgba(30, 51, 94, .08);
-      font-size: .92rem;
-      font-weight: 800;
-      color: #26334a;
-    }
-
-    .legend-dot {
-      width: 12px;
-      height: 12px;
-      border: 1.5px solid #fff;
-      border-radius: 999px;
-      background: var(--cyan);
-    }
-
-    .legend-dot.soon {
-      background: #aeb8c4;
-    }
-
-    .network-tooltip {
-      position: absolute;
-      z-index: 30;
-      left: 50%;
-      top: 50%;
-      min-width: 220px;
-      max-width: min(300px, calc(100vw - 32px));
-      padding: 13px 15px;
-      border-radius: 12px;
-      background: #050b18;
-      color: #fff;
-      box-shadow: 0 18px 44px rgba(5, 11, 24, .26);
-      transform: translate(-50%, calc(-100% - 18px));
-      font-size: .91rem;
-      line-height: 1.35;
-    }
-
-    .network-tooltip::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -8px;
-      transform: translateX(-50%);
-      border-width: 8px 7px 0;
-      border-style: solid;
-      border-color: #050b18 transparent transparent;
-    }
-
-    .network-tooltip strong {
-      display: block;
-      margin-bottom: 3px;
-      font-weight: 900;
-      font-size: .98rem;
-    }
-
-    .network-tooltip small {
-      display: block;
-      margin-bottom: 8px;
-      color: rgba(255, 255, 255, .68);
-      font-weight: 700;
-    }
-
-    .network-tooltip a {
-      color: var(--cyan);
-      font-weight: 900;
-      text-decoration: none;
-    }
-
-    .network-tooltip a:hover {
-      text-decoration: underline;
-    }
-
-    .network-tooltip .soon-text {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .1);
-      font-weight: 900;
-    }
-
-    @media (max-width: 991.98px) {
-      .network-section {
-        align-items: flex-start;
-        padding-top: 46px;
-      }
-
-      .network-title {
-        font-size: clamp(3.4rem, 15vw, 5.8rem);
-      }
-
-      .network-copy,
-      .ux-card {
-        max-width: none;
-      }
-
-      .map-shell {
-        width: min(100%, 560px);
-        margin-top: 28px;
-      }
-    }
-
-    @media (max-width: 575.98px) {
-      .network-section {
-        padding-block: 34px;
-      }
-
-      .ux-card {
-        padding: 16px;
-        border-radius: 18px;
-      }
-
-      .map-shell {
-        width: min(100%, 460px);
-      }
-
       .country-label {
-        font-size: clamp(12px, 3.2vw, 15px);
+        position: absolute;
+        z-index: 4;
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%);
+        min-width: max-content;
+        color: #334766;
+        font-size: clamp(13px, 1.35vw, 19px);
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -0.045em;
         text-shadow: none;
+        pointer-events: none;
+        white-space: nowrap;
       }
 
       .country-label.label-small {
-        font-size: clamp(10px, 2.7vw, 13px);
+        font-size: clamp(12px, 1.05vw, 16px);
+      }
+
+      .country-label.label-left {
+        transform: translate(-100%, -50%);
+      }
+
+      .country-label.label-right {
+        transform: translate(0, -50%);
+      }
+
+      .country-label.label-top {
+        transform: translate(-50%, -100%);
+      }
+
+      .country-label.label-bottom {
+        transform: translate(-50%, 0);
       }
 
       .network-pin {
-        width: 17px;
-        height: 17px;
-        border-width: 1.5px;
+        position: absolute;
+        z-index: 6;
+        left: var(--x);
+        top: var(--y);
+        width: clamp(12px, 1.3vw, 18px);
+        height: clamp(12px, 1.3vw, 18px);
+        border: 1.5px solid #fff;
+        border-radius: 999px;
+        background: var(--cyan);
+        box-shadow: 0 4px 12px rgba(25, 88, 244, 0.16);
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        appearance: none;
+        padding: 0;
+        transition:
+          transform 0.18s ease,
+          background 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .network-pin:hover,
+      .network-pin:focus-visible,
+      .network-pin.active {
+        background: var(--blue);
+        transform: translate(-50%, -50%) scale(1.22);
+        box-shadow: 0 7px 18px rgba(25, 88, 244, 0.3);
+        outline: none;
+      }
+
+      .network-pin.coming-soon {
+        background: #aeb8c4;
+      }
+
+      .network-pin.coming-soon:hover,
+      .network-pin.coming-soon:focus-visible,
+      .network-pin.coming-soon.active {
+        background: #6f7d8d;
       }
 
       .map-legend {
-        gap: 8px;
-        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
       }
 
       .legend-pill {
-        padding: 8px 11px;
-        font-size: .82rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 16px 38px rgba(30, 51, 94, 0.08);
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: #26334a;
+      }
+
+      .legend-dot {
+        width: 12px;
+        height: 12px;
+        border: 1.5px solid #fff;
+        border-radius: 999px;
+        background: var(--cyan);
+      }
+
+      .legend-dot.soon {
+        background: #aeb8c4;
       }
 
       .network-tooltip {
-        position: fixed;
-        left: 50% !important;
-        top: auto !important;
-        bottom: 18px;
-        transform: translateX(-50%);
-        width: calc(100% - 32px);
-        max-width: 380px;
+        position: absolute;
+        z-index: 30;
+        left: 50%;
+        top: 50%;
+        min-width: 220px;
+        max-width: min(300px, calc(100vw - 32px));
+        padding: 13px 15px;
+        border-radius: 12px;
+        background: #050b18;
+        color: #fff;
+        box-shadow: 0 18px 44px rgba(5, 11, 24, 0.26);
+        transform: translate(-50%, calc(-100% - 18px));
+        font-size: 0.91rem;
+        line-height: 1.35;
       }
 
       .network-tooltip::after {
-        display: none;
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -8px;
+        transform: translateX(-50%);
+        border-width: 8px 7px 0;
+        border-style: solid;
+        border-color: #050b18 transparent transparent;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <main class="network-section">
-    <div class="container network-content">
-      <div class="row align-items-center g-4 g-lg-5">
-        <div class="col-12 col-lg-5">
-          <h1 class="network-title">Our <span>Network</span></h1>
-          <p class="network-copy">
-        Explore our affiliated research centers across Latin America and discover each site through the interactive map.
-          </p>
-<div class="map-legend" aria-label="Map legend">
-  <span class="legend-pill"><span class="legend-dot"></span> Affiliated center</span>
-  <span class="legend-pill"><span class="legend-dot soon"></span> Coming Soon</span>
-</div>
-         
-        </div>
+      .network-tooltip strong {
+        display: block;
+        margin-bottom: 3px;
+        font-weight: 900;
+        font-size: 0.98rem;
+      }
 
-        <div class="col-12 col-lg-7">
-          <div class="map-shell">
-            <div class="map-stage" id="mapStage">
-              <img
-                class="latam-map"
-                src="https://ik.imagekit.io/lsmaggiore/endpoints/map-latam-pin.webp?tr=f-webp&amp;updatedAt=1753284111268"
-                alt="Map of Latin America showing Endpoints clinical research site locations"
+      .network-tooltip small {
+        display: block;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.68);
+        font-weight: 700;
+      }
+
+      .network-tooltip a {
+        color: var(--cyan);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .network-tooltip a:hover {
+        text-decoration: underline;
+      }
+
+      .network-tooltip .soon-text {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 900;
+      }
+
+      @media (max-width: 991.98px) {
+        .network-section {
+          align-items: flex-start;
+          padding-top: 46px;
+        }
+
+        .network-title {
+          font-size: clamp(3.4rem, 15vw, 5.8rem);
+        }
+
+        .network-copy,
+        .ux-card {
+          max-width: none;
+        }
+
+        .map-shell {
+          width: min(100%, 740px);
+          margin-top: 28px;
+        }
+      }
+
+      @media (max-width: 575.98px) {
+        .network-section {
+          padding-block: 34px;
+        }
+
+        .ux-card {
+          padding: 16px;
+          border-radius: 18px;
+        }
+
+        .map-shell {
+          width: min(100%, 600px);
+        }
+
+        .country-label {
+          font-size: clamp(12px, 3.2vw, 15px);
+          text-shadow: none;
+        }
+
+        .country-label.label-small {
+          font-size: clamp(10px, 2.7vw, 13px);
+        }
+
+        .network-pin {
+          width: 13px;
+          height: 13px;
+          border-width: 1.5px;
+        }
+
+        .map-legend {
+          gap: 8px;
+          margin-top: 12px;
+        }
+
+        .legend-pill {
+          padding: 8px 11px;
+          font-size: 0.82rem;
+        }
+
+        .network-tooltip {
+          position: fixed;
+          left: 50% !important;
+          top: auto !important;
+          bottom: 18px;
+          transform: translateX(-50%);
+          width: calc(100% - 32px);
+          max-width: 380px;
+        }
+
+        .network-tooltip::after {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="network-section">
+      <div class="container network-content">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-12 col-lg-5">
+            <h1 class="network-title">Our <span>Network</span></h1>
+            <p class="network-copy">
+              Explore our affiliated research centers across Latin America and
+              discover each site through the interactive map.
+            </p>
+            <div class="map-legend" aria-label="Map legend">
+              <span class="legend-pill"
+                ><span class="legend-dot"></span> Affiliated center</span
               >
-
-              <!-- Country labels: moved away from markers -->
-              <span class="country-label" style="--x: 28.5%; --y: 13.2%;">Mexico</span>
-              <span class="country-label label-small label-bottom" style="--x: 34.3%; --y: 24.4%;">Guatemala</span>
-              <span class="country-label label-small label-right" style="--x: 40.7%; --y: 20.8%;">Honduras</span>
-              <span class="country-label label-small label-bottom" style="--x: 48.8%; --y: 30.4%;">Panama</span>
-              <span class="country-label label-small label-bottom" style="--x: 51.6%; --y: 39.0%;">Colombia</span>
-              <span class="country-label label-small label-left" style="--x: 55.0%; --y: 45.8%;">Ecuador</span>
-              <span class="country-label label-small label-left" style="--x: 58.3%; --y: 57.3%;">Peru</span>
-              <span class="country-label label-small label-right" style="--x: 76.7%; --y: 49.3%;">Brazil</span>
-              <span class="country-label label-small label-left" style="--x: 57.3%; --y: 70.5%;">Chile</span>
-              <span class="country-label label-small label-bottom" style="--x: 64.6%; --y: 82.4%;">Argentina</span>
-
-              <!-- Existing centers -->
-              <button class="network-pin" style="--x: 47.1%; --y: 28.5%;" data-name="CEVAXIN" data-country="Panama" data-url="https://cevaxin.com/" aria-label="CEVAXIN"></button>
-              <button class="network-pin" style="--x: 50.6%; --y: 34.5%;" data-name="CEIP" data-country="Colombia" data-url="https://ceiponline.org/" aria-label="CEIP"></button>
-              <button class="network-pin" style="--x: 54.4%; --y: 33.3%;" data-name="Policlínico Social del Norte" data-country="Colombia" data-url="https://policlinicosocialdelnorte.com/" aria-label="Policlínico Social del Norte"></button>
-              <button class="network-pin" style="--x: 31.7%; --y: 23.2%;" data-name="CECLISA" data-country="Guatemala" data-url="https://ceclisa.org/" aria-label="CECLISA"></button>
-              <button class="network-pin" style="--x: 63.2%; --y: 76.2%;" data-name="CIMEL" data-country="Argentina" data-url="https://cimel-cr.com.ar/index.html" aria-label="CIMEL"></button>
-
-              <!-- New centers -->
-              <button class="network-pin" style="--x: 38.1%; --y: 22.7%;" data-name="CENTHICSA" data-country="Honduras" data-url="https://centhicsa.com/" aria-label="CENTHICSA"></button>
-              <button class="network-pin" style="--x: 85.2%; --y: 60.2%;" data-name="CPQuali - Rio de Janeiro" data-country="Brazil" data-url="https://cpquali.com.br/" aria-label="CPQuali - Rio de Janeiro"></button>
-              <button class="network-pin" style="--x: 82.5%; --y: 64.0%;" data-name="CPQuali - Salvador" data-country="Brazil" data-url="https://cpquali.com.br/" aria-label="CPQuali - Salvador"></button>
-              <button class="network-pin" style="--x: 80.1%; --y: 55.3%;" data-name="CPQuali - Goiania" data-country="Brazil" data-url="https://cpquali.com.br/" aria-label="CPQuali - Goiania"></button>
-              <button class="network-pin" style="--x: 74.7%; --y: 47.2%;" data-name="CPQuali - Manaus" data-country="Brazil" data-url="https://cpquali.com.br/" aria-label="CPQuali - Manaus"></button>
-              <button class="network-pin" style="--x: 83.2%; --y: 57.4%;" data-name="CPQuali - Sao Paulo" data-country="Brazil" data-url="https://cpquali.com.br/" aria-label="CPQuali - Sao Paulo"></button>
-              <button class="network-pin" style="--x: 21.0%; --y: 16.5%;" data-name="Instituto de Investigaciones Clínicas para la Salud AC" data-country="Mexico" data-url="http://iics.com.mx/" aria-label="Instituto de Investigaciones Clínicas para la Salud AC"></button>
-              <button class="network-pin" style="--x: 24.4%; --y: 18.8%;" data-name="IBIOMED" data-country="Mexico" data-url="https://investigacionbiomedica.com.mx/" aria-label="IBIOMED"></button>
-              <button class="network-pin" style="--x: 52.4%; --y: 36.2%;" data-name="Clínica Sigma" data-country="Colombia" data-url="https://www.clinicasigma.com.co/" aria-label="Clínica Sigma"></button>
-              <button class="network-pin" style="--x: 60.9%; --y: 75.1%;" data-name="Instituto de Investigaciones Clínicas de Córdoba" data-country="Argentina" data-url="https://iic-cordoba.org" aria-label="Instituto de Investigaciones Clínicas de Córdoba"></button>
-
-              <!-- Coming Soon -->
-              <button class="network-pin coming-soon" style="--x: 55.6%; --y: 44.6%;" data-name="Ecuador" data-country="Ecuador" data-status="Coming Soon" aria-label="Ecuador Coming Soon"></button>
-              <button class="network-pin coming-soon" style="--x: 58.7%; --y: 55.4%;" data-name="Peru" data-country="Peru" data-status="Coming Soon" aria-label="Peru Coming Soon"></button>
-              <button class="network-pin coming-soon" style="--x: 58.2%; --y: 67.3%;" data-name="Chile" data-country="Chile" data-status="Coming Soon" aria-label="Chile Coming Soon"></button>
-
-              <div id="networkTooltip" class="network-tooltip" hidden></div>
+              <span class="legend-pill"
+                ><span class="legend-dot soon"></span> Coming Soon</span
+              >
             </div>
+          </div>
 
-           
+          <div class="col-12 col-lg-7">
+            <div class="map-shell">
+              <div class="map-stage" id="mapStage">
+                <img
+                  class="latam-map"
+                  src="https://ik.imagekit.io/lsmaggiore/endpoints/map-latam-pin.webp?tr=f-webp&amp;updatedAt=1753284111268"
+                  alt="Map of Latin America showing Endpoints clinical research site locations"
+                />
+
+                <!-- Country labels: moved away from markers -->
+                <span class="country-label" style="--x: 28.5%; --y: 13.2%"
+                  >Mexico</span
+                >
+                <span
+                  class="country-label label-small label-bottom"
+                  style="--x: 34.3%; --y: 24.4%"
+                  >Guatemala</span
+                >
+                <span
+                  class="country-label label-small label-right"
+                  style="--x: 40.7%; --y: 20.8%"
+                  >Honduras</span
+                >
+                <span
+                  class="country-label label-small label-bottom"
+                  style="--x: 48.8%; --y: 30.4%"
+                  >Panama</span
+                >
+                <span
+                  class="country-label label-small label-bottom"
+                  style="--x: 51.6%; --y: 39%"
+                  >Colombia</span
+                >
+                <span
+                  class="country-label label-small label-left"
+                  style="--x: 55%; --y: 45.8%"
+                  >Ecuador</span
+                >
+                <span
+                  class="country-label label-small label-left"
+                  style="--x: 58.3%; --y: 57.3%"
+                  >Peru</span
+                >
+                <span
+                  class="country-label label-small label-right"
+                  style="--x: 76.7%; --y: 49.3%"
+                  >Brazil</span
+                >
+                <span
+                  class="country-label label-small label-left"
+                  style="--x: 57.3%; --y: 70.5%"
+                  >Chile</span
+                >
+                <span
+                  class="country-label label-small label-bottom"
+                  style="--x: 64.6%; --y: 82.4%"
+                  >Argentina</span
+                >
+
+                <!-- Existing centers -->
+                <!-- CEVAXIN - Panama (5 sites, same tooltip/website) -->
+                <button
+                  class="network-pin"
+                  style="--x: 47.1%; --y: 28.5%"
+                  data-name="CEVAXIN"
+                  data-country="Panama"
+                  data-url="https://cevaxin.com/"
+                  aria-label="CEVAXIN - The Panamá Clinic"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 48.1%; --y: 27.9%"
+                  data-name="CEVAXIN"
+                  data-country="Panama"
+                  data-url="https://cevaxin.com/"
+                  aria-label="CEVAXIN - 24 de Diciembre"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 44.9%; --y: 28.8%"
+                  data-name="CEVAXIN"
+                  data-country="Panama"
+                  data-url="https://cevaxin.com/"
+                  aria-label="CEVAXIN - Chorrera"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 46.3%; --y: 29.2%"
+                  data-name="CEVAXIN"
+                  data-country="Panama"
+                  data-url="https://cevaxin.com/"
+                  aria-label="CEVAXIN - Avenida México"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 42.8%; --y: 29%"
+                  data-name="CEVAXIN"
+                  data-country="Panama"
+                  data-url="https://cevaxin.com/"
+                  aria-label="CEVAXIN - Chiriquí"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 50.6%; --y: 34.5%"
+                  data-name="CEIP"
+                  data-country="Colombia"
+                  data-url="https://ceiponline.org/"
+                  aria-label="CEIP"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 54.4%; --y: 33.3%"
+                  data-name="Policlínico Social del Norte"
+                  data-country="Colombia"
+                  data-url="https://policlinicosocialdelnorte.com/"
+                  aria-label="Policlínico Social del Norte"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 31.7%; --y: 23.2%"
+                  data-name="CECLISA"
+                  data-country="Guatemala"
+                  data-url="https://ceclisa.org/"
+                  aria-label="CECLISA"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 63.2%; --y: 76.2%"
+                  data-name="CIMEL"
+                  data-country="Argentina"
+                  data-url="https://cimel-cr.com.ar/index.html"
+                  aria-label="CIMEL"
+                ></button>
+
+                <!-- New centers -->
+                <button
+                  class="network-pin"
+                  style="--x: 38.1%; --y: 22.7%"
+                  data-name="CENTHICSA"
+                  data-country="Honduras"
+                  data-url="https://centhicsa.com/"
+                  aria-label="CENTHICSA"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 85.2%; --y: 60.2%"
+                  data-name="CPQuali - Rio de Janeiro"
+                  data-country="Brazil"
+                  data-url="https://cpquali.com.br/"
+                  aria-label="CPQuali - Rio de Janeiro"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 82.5%; --y: 64%"
+                  data-name="CPQuali - Salvador"
+                  data-country="Brazil"
+                  data-url="https://cpquali.com.br/"
+                  aria-label="CPQuali - Salvador"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 80.1%; --y: 55.3%"
+                  data-name="CPQuali - Goiania"
+                  data-country="Brazil"
+                  data-url="https://cpquali.com.br/"
+                  aria-label="CPQuali - Goiania"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 74.7%; --y: 47.2%"
+                  data-name="CPQuali - Manaus"
+                  data-country="Brazil"
+                  data-url="https://cpquali.com.br/"
+                  aria-label="CPQuali - Manaus"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 83.2%; --y: 57.4%"
+                  data-name="CPQuali - Sao Paulo"
+                  data-country="Brazil"
+                  data-url="https://cpquali.com.br/"
+                  aria-label="CPQuali - Sao Paulo"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 21%; --y: 16.5%"
+                  data-name="Instituto de Investigaciones Clínicas para la Salud AC"
+                  data-country="Mexico"
+                  data-url="http://iics.com.mx/"
+                  aria-label="Instituto de Investigaciones Clínicas para la Salud AC"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 24.4%; --y: 18.8%"
+                  data-name="IBIOMED"
+                  data-country="Mexico"
+                  data-url="https://investigacionbiomedica.com.mx/"
+                  aria-label="IBIOMED"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 52.4%; --y: 36.2%"
+                  data-name="Clínica Sigma"
+                  data-country="Colombia"
+                  data-url="https://www.clinicasigma.com.co/"
+                  aria-label="Clínica Sigma"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 60.9%; --y: 75.1%"
+                  data-name="Instituto de Investigaciones Clínicas de Córdoba"
+                  data-country="Argentina"
+                  data-url="https://iic-cordoba.org"
+                  aria-label="Instituto de Investigaciones Clínicas de Córdoba"
+                ></button>
+
+                <!-- Coming Soon -->
+                <button
+                  class="network-pin coming-soon"
+                  style="--x: 55.6%; --y: 44.6%"
+                  data-name="Ecuador"
+                  data-country="Ecuador"
+                  data-status="Coming Soon"
+                  aria-label="Ecuador Coming Soon"
+                ></button>
+                <button
+                  class="network-pin coming-soon"
+                  style="--x: 58.7%; --y: 55.4%"
+                  data-name="Peru"
+                  data-country="Peru"
+                  data-status="Coming Soon"
+                  aria-label="Peru Coming Soon"
+                ></button>
+                <button
+                  class="network-pin"
+                  style="--x: 58.2%; --y: 67.3%"
+                  data-name="Clinical Research Chile"
+                  data-country="Chile"
+                  data-url="https://clinicalresearchchile.com/"
+                  aria-label="Inicio - Clinical Research"
+                ></button>
+
+                <div id="networkTooltip" class="network-tooltip" hidden></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const stage = document.getElementById("mapStage");
-      const tooltip = document.getElementById("networkTooltip");
-      const pins = Array.from(document.querySelectorAll(".network-pin"));
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const stage = document.getElementById("mapStage");
+        const tooltip = document.getElementById("networkTooltip");
+        const pins = Array.from(document.querySelectorAll(".network-pin"));
 
-      if (!stage || !tooltip || !pins.length) return;
+        if (!stage || !tooltip || !pins.length) return;
 
-      function closeTooltip() {
-        tooltip.hidden = true;
-        tooltip.innerHTML = "";
-        pins.forEach(pin => pin.classList.remove("active"));
-      }
-
-      function positionTooltip(pin) {
-        const stageBox = stage.getBoundingClientRect();
-        const pinBox = pin.getBoundingClientRect();
-
-        tooltip.style.left = (pinBox.left - stageBox.left + pinBox.width / 2) + "px";
-        tooltip.style.top = (pinBox.top - stageBox.top) + "px";
-      }
-
-      function openTooltip(pin, event) {
-        if (event) event.stopPropagation();
-
-        pins.forEach(item => item.classList.remove("active"));
-        pin.classList.add("active");
-
-        const name = pin.dataset.name || "";
-        const country = pin.dataset.country || "";
-        const url = pin.dataset.url || "";
-        const status = pin.dataset.status || "";
-
-        if (status === "Coming Soon") {
-          tooltip.innerHTML =
-            "<strong>" + name + "</strong>" +
-            "<small>" + country + "</small>" +
-            "<span class='soon-text'>Coming Soon</span>";
-        } else {
-          tooltip.innerHTML =
-            "<strong>" + name + "</strong>" +
-            "<small>" + country + "</small>" +
-            "<a href='" + url + "' target='_blank' rel='noopener'>Visit website</a>";
+        function closeTooltip() {
+          tooltip.hidden = true;
+          tooltip.innerHTML = "";
+          pins.forEach((pin) => pin.classList.remove("active"));
         }
 
-        positionTooltip(pin);
-        tooltip.hidden = false;
-      }
+        function positionTooltip(pin) {
+          const stageBox = stage.getBoundingClientRect();
+          const pinBox = pin.getBoundingClientRect();
 
-      pins.forEach(pin => {
-        pin.addEventListener("click", event => openTooltip(pin, event));
+          tooltip.style.left =
+            pinBox.left - stageBox.left + pinBox.width / 2 + "px";
+          tooltip.style.top = pinBox.top - stageBox.top + "px";
+        }
 
-        pin.addEventListener("keydown", event => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            openTooltip(pin, event);
+        function openTooltip(pin, event) {
+          if (event) event.stopPropagation();
+
+          pins.forEach((item) => item.classList.remove("active"));
+          pin.classList.add("active");
+
+          const name = pin.dataset.name || "";
+          const country = pin.dataset.country || "";
+          const url = pin.dataset.url || "";
+          const status = pin.dataset.status || "";
+
+          if (status === "Coming Soon") {
+            tooltip.innerHTML =
+              "<strong>" +
+              name +
+              "</strong>" +
+              "<small>" +
+              country +
+              "</small>" +
+              "<span class='soon-text'>Coming Soon</span>";
+          } else {
+            tooltip.innerHTML =
+              "<strong>" +
+              name +
+              "</strong>" +
+              "<small>" +
+              country +
+              "</small>" +
+              "<a href='" +
+              url +
+              "' target='_blank' rel='noopener'>Visit website</a>";
           }
 
-          if (event.key === "Escape") {
-            closeTooltip();
+          positionTooltip(pin);
+          tooltip.hidden = false;
+        }
+
+        pins.forEach((pin) => {
+          pin.addEventListener("click", (event) => openTooltip(pin, event));
+
+          pin.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openTooltip(pin, event);
+            }
+
+            if (event.key === "Escape") {
+              closeTooltip();
+            }
+          });
+        });
+
+        tooltip.addEventListener("click", (event) => event.stopPropagation());
+        document.addEventListener("click", closeTooltip);
+
+        window.addEventListener("resize", () => {
+          const activePin = document.querySelector(".network-pin.active");
+          if (activePin && !tooltip.hidden) {
+            positionTooltip(activePin);
           }
         });
       });
-
-      tooltip.addEventListener("click", event => event.stopPropagation());
-      document.addEventListener("click", closeTooltip);
-
-      window.addEventListener("resize", () => {
-        const activePin = document.querySelector(".network-pin.active");
-        if (activePin && !tooltip.hidden) {
-          positionTooltip(activePin);
-        }
-      });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
